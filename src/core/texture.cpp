@@ -26,6 +26,7 @@ Texture::Texture(const std::string& textureName) {
     m_size = r;
 }
 
+
 int Texture::getWidth() const {
     return m_size.w;
 }

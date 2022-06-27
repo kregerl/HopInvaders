@@ -6,7 +6,7 @@
 #include "sprite.h"
 #include "renderer.h"
 #include "player.h"
-#include "textcomponent.h"
+#include "../components/textcomponent.h"
 
 
 enum class GameState {

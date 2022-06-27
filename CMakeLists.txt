@@ -3,5 +3,5 @@ project(HopInvaders)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(HopInvaders src/main.cpp src/game.cpp src/game.h src/window.cpp src/window.h src/sprite.cpp src/sprite.h src/renderer.cpp src/renderer.h src/player.cpp src/player.h src/events.h src/textcomponent.cpp src/textcomponent.h src/assetmanager.cpp src/assetmanager.h src/texture.cpp src/texture.h src/bullet.cpp src/bullet.h)
+add_executable(HopInvaders src/core/main.cpp src/core/game.cpp src/core/game.h src/core/window.cpp src/core/window.h src/core/sprite.cpp src/core/sprite.h src/core/renderer.cpp src/core/renderer.h src/core/player.cpp src/core/player.h src/core/events.h src/components/textcomponent.cpp src/components/textcomponent.h src/core/assetmanager.cpp src/core/assetmanager.h src/core/texture.cpp src/core/texture.h src/entity/bullet.cpp src/entity/bullet.h src/components/countingcomponent.cpp src/components/countingcomponent.h)
 target_link_libraries(HopInvaders SDL2 SDL2_image SDL2_ttf)

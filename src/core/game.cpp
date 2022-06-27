@@ -58,6 +58,7 @@ void Game::pollEvents(SDL_Event& e) {
                     } else if (m_state == GameState::RUNNING) {
                         m_state = GameState::PAUSED;
                     }
+                    break;
                 }
             }
             break;

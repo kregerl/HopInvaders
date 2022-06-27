@@ -5,7 +5,7 @@
 #include "sprite.h"
 #include "renderer.h"
 #include "events.h"
-#include "bullet.h"
+#include "../entity/bullet.h"
 
 class Player {
 public:

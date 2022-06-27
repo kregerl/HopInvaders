@@ -1,10 +1,14 @@
 #include "textcomponent.h"
-#include "assetmanager.h"
+#include "../core/assetmanager.h"
 
-TextComponent::TextComponent(const std::string& font, const std::string& text, SDL_Point position, int font_size,
-                             Alignment alignment)
-        : m_texture(font, font_size, text, {.r=255, .g=255, .b=255, .a=255}),
-          m_pos(getAdjustedPoint(position, alignment)) {
+TextComponent::TextComponent(const std::string& font, const std::string& text, SDL_Point position, int fontSize,
+                             Alignment alignment, SDL_Color color)
+        : m_texture(font, fontSize, text, color),
+          m_pos(getAdjustedPoint(position, alignment)),
+          m_fontSize(fontSize),
+          m_fontName(font),
+          m_color(color),
+          m_text(text) {
 
 }
 
@@ -34,6 +38,18 @@ SDL_Point TextComponent::getAdjustedPoint(SDL_Point point, Alignment alignment) 
         }
     }
     return pos;
+}
+
+SDL_Color TextComponent::getColor() const {
+    return m_color;
+}
+
+std::string TextComponent::getFont() const {
+    return m_fontName;
+}
+
+int TextComponent::getFontSize() const {
+    return m_fontSize;
 }
 
 
