@@ -6,4 +6,5 @@ enum class Event {
     MoveRight
 };
 
+
 #endif //HOPINVADERS_EVENTS_H

@@ -14,7 +14,8 @@ public:
 
     SDL_Texture* getTexture(const std::string& filename);
 
-    SDL_Texture* getTextTexture(const std::string& filename, int size, const std::string& text, SDL_Color color);
+    SDL_Texture* getTextTexture(const std::string& filename, int size, const std::string& text, SDL_Color color,
+                                const std::string& registryName);
 
     TTF_Font* getFont(const std::string& filename, int size);
 

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "player.h"
 
 #define MOVEMENT_SPEED 10
@@ -5,10 +6,10 @@
 
 
 Player::Player() :
-        m_position({.x = Window::instance()->getWindowSize().x / 2, .y=Window::instance()->getWindowSize().y -
+        m_position({.x = Window::instance()->getWindowSize().w / 2, .y=Window::instance()->getWindowSize().h -
                                                                        (m_sprite.m_spriteSize.h + BOTTOM_MARGIN)}),
-        m_sprite("HopThruster.png",
-                 64, 64) {
+        m_sprite("AnimatedThruster.png",
+                 64, 64, 4) {
 }
 
 void Player::onUpdate() {
@@ -24,6 +25,12 @@ void Player::onUpdate() {
     }
 
     m_sprite.draw(m_position);
+
+    auto screenCollider = Collider(Window::instance()->getWindowSize());
+    if (!m_bullet->getCollider().isWithin(screenCollider)) {
+        m_bullet.reset();
+    }
+
     if (m_bullet) {
         m_bullet->onUpdate();
     }

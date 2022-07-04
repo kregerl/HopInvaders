@@ -8,12 +8,12 @@
 Game::Game() : m_state(GameState::RUNNING) {
 
     auto windowSize = Window::instance()->getWindowSize();
-    SDL_RenderSetLogicalSize(Renderer::instance()->getRenderer(), windowSize.x, windowSize.y);
+    SDL_RenderSetLogicalSize(Renderer::instance()->getRenderer(), windowSize.w, windowSize.h);
     m_textComponents.emplace_back("space_invaders.ttf", "Score", SDL_Point{.x=0, .y=0}, HEADER_FONT_SIZE);
-    m_textComponents.emplace_back("space_invaders.ttf", "High Score", SDL_Point{.x=(windowSize.x / 2), .y=0},
+    m_textComponents.emplace_back("space_invaders.ttf", "High Score", SDL_Point{.x=(windowSize.w / 2), .y=0},
                                   HEADER_FONT_SIZE,
                                   Alignment::Center);
-    m_textComponents.emplace_back("space_invaders.ttf", "Lives", SDL_Point{.x=windowSize.x, .y=0}, HEADER_FONT_SIZE,
+    m_textComponents.emplace_back("space_invaders.ttf", "Lives", SDL_Point{.x=windowSize.w, .y=0}, HEADER_FONT_SIZE,
                                   Alignment::Right);
 }
 

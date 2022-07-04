@@ -4,6 +4,7 @@
 
 #include <SDL2/SDL_rect.h>
 #include "../core/sprite.h"
+#include "../core/collider.h"
 
 class Bullet {
 public:
@@ -16,6 +17,8 @@ public:
 
     void onUpdate();
 
+    Collider getCollider() const;
+
     void setMoving(bool moving);
 
     bool isMoving();
@@ -25,7 +28,7 @@ public:
 private:
     Direction m_direction;
     Sprite m_sprite;
-    SDL_Point m_position;
+    Collider m_collider;
     bool m_moving;
 };
 

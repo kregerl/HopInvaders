@@ -59,13 +59,23 @@ TTF_Font* AssetManager::getFont(const std::string& filename, int size) {
 }
 
 SDL_Texture*
-AssetManager::getTextTexture(const std::string& filename, int size, const std::string& text, SDL_Color color) {
-    std::stringstream ss;
-    ss << filename;
-    ss << "," + std::to_string(size);
-    ss << "," + text;
-    ss << "," + std::to_string(color.r) + std::to_string(color.g) + std::to_string(color.b);
-    std::string key = ss.str();
+AssetManager::getTextTexture(const std::string& filename, int size, const std::string& text, SDL_Color color,
+                             const std::string& registryName) {
+    std::string key;
+    if (!registryName.empty()) {
+        key = registryName;
+        if (m_textTextures[key] != nullptr) {
+            SDL_DestroyTexture(m_textTextures[key]);
+            m_textTextures[key] = nullptr;
+        }
+    } else {
+        std::stringstream ss;
+        ss << filename;
+        ss << "," + std::to_string(size);
+        ss << "," + text;
+        ss << "," + std::to_string(color.r) + std::to_string(color.g) + std::to_string(color.b);
+        key = ss.str();
+    }
 
     std::cout << "Loading text texture with key: " << key << std::endl;
 

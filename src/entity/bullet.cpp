@@ -1,18 +1,22 @@
 #include "bullet.h"
 
+#include <utility>
+
 #define VELOCITY 2
 
-Bullet::Bullet(Sprite sprite, SDL_Point position, Bullet::Direction dir) : m_sprite(sprite), m_position(position),
+Bullet::Bullet(Sprite sprite, SDL_Point position, Bullet::Direction dir) : m_sprite(std::move(sprite)),
+                                                                           m_collider(m_sprite.getSize(), position),
                                                                            m_moving(false), m_direction(dir) {
 
 }
 
 void Bullet::onUpdate() {
     if (m_moving) {
-        m_position.y += static_cast<int>(m_direction) * VELOCITY;
+        m_collider.setPosY(m_collider.getPos().y + static_cast<int>(m_direction) * VELOCITY);
     }
 
-    m_sprite.draw(m_position);
+
+    m_sprite.draw(m_collider.getPos());
 }
 
 void Bullet::setMoving(bool moving) {
@@ -24,7 +28,11 @@ bool Bullet::isMoving() {
 }
 
 void Bullet::setPosition(SDL_Point pos) {
-    m_position = pos;
+    m_collider.setPos(pos);
+}
+
+Collider Bullet::getCollider() const {
+    return m_collider;
 }
 
 

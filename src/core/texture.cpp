@@ -1,8 +1,11 @@
 #include "texture.h"
+
+#include <utility>
 #include "assetmanager.h"
 
-Texture::Texture(const std::string& fontName, int fontSize, const std::string& text, SDL_Color color) {
-    m_texture = AssetManager::instance()->getTextTexture(fontName, fontSize, text, color);
+Texture::Texture(const std::string& fontName, int fontSize, const std::string& text, SDL_Color color,
+                 std::string registryName) : m_registryName(std::move(registryName)) {
+    m_texture = AssetManager::instance()->getTextTexture(fontName, fontSize, text, color, m_registryName);
 
     SDL_Rect r = {
             .x = 0,
@@ -41,6 +44,10 @@ SDL_Texture* Texture::get() const {
 
 SDL_Rect Texture::getSize() {
     return m_size;
+}
+
+std::string Texture::getRegistryName() {
+    return m_registryName;
 }
 
 

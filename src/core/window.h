@@ -15,7 +15,7 @@ public:
 
     [[nodiscard]] SDL_Window* getWindow() const;
 
-    SDL_Point getWindowSize();
+    SDL_Rect getWindowSize();
 
 private:
     Window();
@@ -26,7 +26,7 @@ private:
     static Window* s_instance;
 
     SDL_Window* m_window;
-    SDL_Point m_windowSize;
+    SDL_Rect m_windowSize;
 };
 
 
